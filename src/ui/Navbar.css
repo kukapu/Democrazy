@@ -1,0 +1,57 @@
+.header {
+    width: 100%;
+    background-color: orange;
+    padding: 1em;
+    display: flex;
+    flex-flow:  row wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.row {
+    display: flex;
+}
+.header-h1 {
+    background-color: aqua;
+}
+
+/* .header-a {} */
+
+.header-svg {
+    width: 2em;
+    height: 2em;
+}
+
+.header-button {
+    background-color: crimson;
+    display: flex;
+}
+
+.header-nav {
+    background-color: bisque;
+    width: 100%;
+    margin-right: 40em;
+    margin-left: 5em;
+}
+
+.header-ul {
+    display: none;
+}
+.header-ul.isActive {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    position: fixed;
+    background-color: black;
+}
+
+.header-link {
+    margin: 0.5em;
+}
+
+
+
+/* @media screen and (max-width:480px){
+    .header
+
+} */

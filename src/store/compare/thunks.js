@@ -1,0 +1,83 @@
+import { democracyApi } from "../../api/democracyApi"
+import { voting } from "./compareSlice"
+
+
+// export const startCreateTemplate = ( wannaDo ) => {
+//     return async ( dispatch ) => {
+//     }
+// }
+
+export const startVoting = ( { wannaDo, votation, uidParticipants } ) => {
+
+    return async ( dispatch ) => {
+        
+        
+        try {
+
+            dispatch( voting( votation ))
+            // console.log({ wannaDo, votation } )
+            const resp = await democracyApi.post('/democracy/compare', { wannaDo, votation, uidParticipants })
+        
+            console.log(resp)
+            const votationID = resp.data.id
+
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+}
+
+export const startAddNewVote = ({ votationId, votation, uid }) => {
+
+    return async ( dispatch ) => {
+
+        try {
+            
+            const resp = await democracyApi.post('/democracy/compare/add', { votationId, votation, uid })
+            // console.log(resp)
+
+
+        } catch (error) {
+            console.log( error )
+        }
+
+
+    }
+}
+
+export const startCreateMajority = ({ type, title, votation, uidParticipants }) => {
+
+    return async ( dispatch ) => {
+
+        try {
+            
+            const resp =  democracyApi.post('/democracy/majority', { type, title, votation, uidParticipants })
+            console.log(resp)
+            
+
+
+
+        } catch (error) {
+            console.log( error )
+        }
+    }
+}
+
+export const startCreateVotation = ({ type, title, votation, uidParticipants }) => {
+
+    return async ( dispatch ) => {
+
+        try {
+            
+            const resp =  democracyApi.post('/democracy/createVotation', { type, title, votation, uidParticipants })
+            console.log(resp)
+            
+
+
+
+        } catch (error) {
+            console.log( error )
+        }
+    }
+}
