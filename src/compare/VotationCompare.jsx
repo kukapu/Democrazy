@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useForm } from "../hooks/useForm"
-import { addNewParticipant, getInfoResults, meVoted, startAddNewVote, startVoting } from "../store"
-import { AddParticipant } from "./AddParticipant"
+import { getInfoResults, meVoted, startAddNewVote } from "../store"
 import { VotationCompareVoted } from "./VotationCompareVoted"
 
 const compareForm = {

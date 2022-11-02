@@ -7,7 +7,7 @@ import { voting } from "./compareSlice"
 //     }
 // }
 
-export const startVoting = ( { wannaDo, votation, uidParticipants } ) => {
+export const startCreateCompare = ( { type, title, votation, uidParticipants } ) => {
 
     return async ( dispatch ) => {
         
@@ -16,10 +16,10 @@ export const startVoting = ( { wannaDo, votation, uidParticipants } ) => {
 
             dispatch( voting( votation ))
             // console.log({ wannaDo, votation } )
-            const resp = await democracyApi.post('/democracy/compare', { wannaDo, votation, uidParticipants })
+            const resp = await democracyApi.post('/democracy/compare', { type, title, votation, uidParticipants })
         
             console.log(resp)
-            const votationID = resp.data.id
+            // const votationID = resp.data.id
 
         } catch (error) {
             console.log(error)

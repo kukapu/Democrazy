@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useForm } from "../hooks/useForm"
-import { addNewParticipant, startVoting } from "../store"
+import { startCreateCompare } from "../store"
 import { AddParticipant } from "./AddParticipant"
 
 const compareForm = {
-    wannaDo: '',
+    title: '',
     userWannaRate: '',
     userRequireRate: '',
 }
@@ -15,18 +15,18 @@ export const Compare = () => {
     const { user } = useSelector( state => state.auth )
     const { uidParticipants } = useSelector( state => state.compare )
     
-    const { userWannaRate, userRequireRate, wannaDo, onInputChange } = useForm( compareForm ) 
+    const { userWannaRate, userRequireRate, title, onInputChange } = useForm( compareForm ) 
 
     const onSubmitCompare = ( event ) => {
         event.preventDefault()
 
         if( userWannaRate > 10 || userWannaRate < 0 ) return
         if( userRequireRate > 10 || userRequireRate < 0 ) return
-        if( wannaDo.length <= 2 ) return
+        if( title.length <= 2 ) return
 
-        dispatch( startVoting( { 
+        dispatch( startCreateCompare( { 
             type: 'compare', 
-            wannaDo, 
+            title, 
             votation: { [user.uid]: [ userWannaRate, userRequireRate ]}, 
             uidParticipants,
         }))
@@ -45,8 +45,8 @@ export const Compare = () => {
                     <input 
                         type="text"
                         placeholder="Que quieres hacer?"
-                        name="wannaDo"
-                        value={ wannaDo }
+                        name="title"
+                        value={ title }
                         onChange= { onInputChange }
                     />
                 </div>
