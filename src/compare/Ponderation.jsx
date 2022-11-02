@@ -51,7 +51,7 @@ export const Ponderation = () => {
         setFormField( data )
     }
 
-    const onSubmit = ( event ) => {
+    const onSubmit = async( event ) => {
         event.preventDefault()
         
         const formFieldValidated = validatePonderation( formField )

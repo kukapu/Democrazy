@@ -1,13 +1,14 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
-import { addvotationParticipating, gettingInfoVotations, getMyVotationsIds, gettingInfoVotationsFromUser, charging, charged, getallVotationsInfo } from "../store"
+import { addvotationParticipating, gettingInfoVotations, getMyVotationsIds, gettingInfoVotationsFromUser, charging, charged, getallVotationsInfo, startDeleteVotation } from "../store"
 
 export const Results = () => {
 
     const dispatch = useDispatch()
     const { user, isCharging } = useSelector( state => state.auth )
     const { allVotationsInfo } = useSelector( state => state.result )
+    const [ allVotationList, setAllVotationList ] = useState( allVotationsInfo )
 
     const getInfoVotationFromUser = async( ) => {
         dispatch( charging() )
@@ -21,11 +22,33 @@ export const Results = () => {
         dispatch( charged() )
     }
 
+    const getInfoVotationFromUserRender = async( ) => {
+        const votationParticipating =  await dispatch( gettingInfoVotationsFromUser({ uid: user.uid }) )
+        dispatch( getallVotationsInfo( votationParticipating.infoVotations ))
+    }
+
     useEffect(() => {
 
         getInfoVotationFromUser()
     
     }, [])
+
+    useEffect(() => {
+
+        getInfoVotationFromUserRender()
+    
+    }, [allVotationList])
+    
+
+    const votationDelete = ( votationId, uidParticipants ) => {
+        // console.log(votationId)
+        dispatch( charging() )
+        dispatch( startDeleteVotation({ votationId, uidParticipants }))
+        // console.log(renderList)
+        // console.log(renderList.filter( votation => votation._id !== votationId ))
+        setAllVotationList( allVotationList.filter( votation => votation._id !== votationId ))
+        dispatch( charged() )
+    }
 
     // const prueba = () => {
     //     console.log( allVotationsInfo )
@@ -40,12 +63,15 @@ export const Results = () => {
                     ( isCharging ) 
                         ? <h3> Cargando </h3>
                         : ( 
-                            allVotationsInfo.map( votation => {
+                            allVotationList.map( votation => {
                                 return (
                                     <li key={ votation._id }>
                                         <Link to={`/results/${votation._id}`}>
                                             { votation.title }
+                                            <span> { votation.type } </span>
                                         </Link>
+                                        
+                                        <button onClick={ () => votationDelete(votation._id, votation.uidParticipants ) }> - </button>
 
                                     </li>
                                 )

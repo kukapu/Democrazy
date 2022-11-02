@@ -52,7 +52,7 @@ export const startCreateMajority = ({ type, title, votation, uidParticipants }) 
 
         try {
             
-            const resp =  democracyApi.post('/democracy/majority', { type, title, votation, uidParticipants })
+            const resp = await democracyApi.post('/democracy/majority', { type, title, votation, uidParticipants })
             console.log(resp)
             
 
@@ -70,8 +70,26 @@ export const startCreateVotation = ({ type, title, votation, uidParticipants }) 
 
         try {
             
-            const resp =  democracyApi.post('/democracy/createVotation', { type, title, votation, uidParticipants })
+            const resp = await democracyApi.post('/democracy/createVotation', { type, title, votation, uidParticipants })
             console.log(resp)
+            
+
+
+
+        } catch (error) {
+            console.log( error )
+        }
+    }
+}
+
+export const startDeleteVotation = ({ votationId, uidParticipants }) => {
+
+    return async ( dispatch ) => {
+
+        try {
+            
+            const { data } = await democracyApi.post('/democracy/delete', { votationId, uidParticipants })
+            console.log(data)
             
 
 
