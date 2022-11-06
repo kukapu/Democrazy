@@ -1,0 +1,47 @@
+.listContainer {
+    border: 1px solid black;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 50%;
+    margin: auto;
+}
+
+.listItem {
+    
+    padding: 15px 0;
+    margin-bottom: 10px;
+}
+
+.listItemConteiner {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.listLink {
+    text-decoration: none;
+    border: 1px solid black;
+    align-self: stretch;
+}
+
+.listDeleteButton{
+    align-self: flex-end;
+    margin-right: 10px;
+}
+
+.dispalyNone {
+    display: none;
+}
+
+.compare {
+    background-color: rgb(46, 232, 102, 0.5);
+}
+
+.majority {
+    background-color: rgba(127, 136, 240, 0.5);
+}
+
+.ponderation {
+    background-color: rgba(220, 148, 148, 0.5);
+}

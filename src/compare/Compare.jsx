@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useForm } from "../hooks/useForm"
-import { startCreateCompare } from "../store"
+import { startCreateVotation } from "../store"
 import { AddParticipant } from "./AddParticipant"
 
 const compareForm = {
@@ -13,7 +13,7 @@ export const Compare = () => {
 
     const dispatch = useDispatch()
     const { user } = useSelector( state => state.auth )
-    const { uidParticipants } = useSelector( state => state.compare )
+    const { uidParticipants } = useSelector( state => state.votation )
     
     const { userWannaRate, userRequireRate, title, onInputChange } = useForm( compareForm ) 
 
@@ -24,7 +24,7 @@ export const Compare = () => {
         if( userRequireRate > 10 || userRequireRate < 0 ) return
         if( title.length <= 2 ) return
 
-        dispatch( startCreateCompare( { 
+        dispatch( startCreateVotation( { 
             type: 'compare', 
             title, 
             votation: { [user.uid]: [ userWannaRate, userRequireRate ]}, 

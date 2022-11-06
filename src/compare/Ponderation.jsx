@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { dataPonderation } from "../helpers/dataPonderation"
 import { validatePonderation } from "../helpers/validatePonderation"
 import { useForm } from "../hooks/useForm"
-import { startCreateMajority } from "../store"
+import { startCreateVotation } from "../store"
 import { AddParticipant } from "./AddParticipant"
 
 
@@ -15,7 +15,7 @@ export const Ponderation = () => {
 
     const dispatch = useDispatch()
     const { user } = useSelector( state => state.auth )
-    const { uidParticipants } = useSelector( state => state.compare )
+    const { uidParticipants } = useSelector( state => state.votation )
 
     const { title, onInputChange } = useForm( ponderationTitleForm )
 
@@ -62,7 +62,7 @@ export const Ponderation = () => {
         console.log(itemsVoted, votation)
 
 
-        dispatch( startCreateMajority({
+        dispatch( startCreateVotation({
             type: 'ponderation',
             title: title,
             votation: { 

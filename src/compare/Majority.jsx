@@ -4,7 +4,7 @@ import { dataMajority } from "../helpers/dataMajority"
 import { uniqueVoteMajority } from "../helpers/uniqueVoteMajority"
 import { validateMajority } from "../helpers/validateMajority"
 import { useForm } from "../hooks/useForm"
-import { startCreateMajority } from "../store"
+import { startCreateVotation } from "../store"
 import { AddParticipant } from "./AddParticipant"
 
 const majorityForm = {
@@ -16,7 +16,7 @@ export const Majority = () => {
     const dispatch = useDispatch()
     const { title, onInputChange } = useForm( majorityForm )
     const { user } = useSelector( state => state.auth )
-    const { uidParticipants } = useSelector( state => state.compare )
+    const { uidParticipants } = useSelector( state => state.votation )
 
     const [multipleChoice, setMultipleChoice] = useState(false)
 
@@ -74,7 +74,7 @@ export const Majority = () => {
         console.log( itemsVoted, votation )
 
 
-        dispatch( startCreateMajority({
+        dispatch( startCreateVotation({
             type: 'majority',
             title: title,
             votation: { 

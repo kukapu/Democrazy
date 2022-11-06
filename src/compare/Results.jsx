@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import { addvotationParticipating, gettingInfoVotations, getMyVotationsIds, gettingInfoVotationsFromUser, charging, charged, getallVotationsInfo, startDeleteVotation } from "../store"
+import './Results.css'
 
 export const Results = () => {
 
@@ -9,6 +10,7 @@ export const Results = () => {
     const { user, isCharging } = useSelector( state => state.auth )
     const { allVotationsInfo } = useSelector( state => state.result )
     const [ allVotationList, setAllVotationList ] = useState( allVotationsInfo )
+    const [showDelete, setShowDelete] = useState(false)
 
     const getInfoVotationFromUser = async( ) => {
         dispatch( charging() )
@@ -22,23 +24,16 @@ export const Results = () => {
         dispatch( charged() )
     }
 
-    const getInfoVotationFromUserRender = async( ) => {
-        const votationParticipating =  await dispatch( gettingInfoVotationsFromUser({ uid: user.uid }) )
-        dispatch( getallVotationsInfo( votationParticipating.infoVotations ))
-    }
-
     useEffect(() => {
 
         getInfoVotationFromUser()
     
-    }, [])
-
-    useEffect(() => {
-
-        getInfoVotationFromUserRender()
-    
     }, [allVotationList])
-    
+
+    const onTaggleDelete = () => {
+        setShowDelete( !showDelete )
+        console.log(showDelete)
+    }
 
     const votationDelete = ( votationId, uidParticipants ) => {
         // console.log(votationId)
@@ -57,21 +52,25 @@ export const Results = () => {
     return (
         <div className="center">
             <h1>Votaciones</h1>
+            <button onClick={ onTaggleDelete }> Eliminar Votaciones </button>
 
-            <ul>
+            <ul className="listContainer">
                 {
                     ( isCharging ) 
                         ? <h3> Cargando </h3>
                         : ( 
                             allVotationList.map( votation => {
                                 return (
-                                    <li key={ votation._id }>
-                                        <Link to={`/results/${votation._id}`}>
-                                            { votation.title }
+                                    <li key={ votation._id } className={`listItem ${ votation.type } listItemConteiner`}>
+                                        <Link to={`/results/${votation._id}`} className="listLink">
                                             <span> { votation.type } </span>
+                                            <span> { votation.title } </span>
                                         </Link>
                                         
-                                        <button onClick={ () => votationDelete(votation._id, votation.uidParticipants ) }> - </button>
+                                        <button 
+                                            className={`listDeleteButton ${showDelete ? 'show' : 'dispalyNone'}`}
+                                            onClick={ () => votationDelete(votation._id, votation.uidParticipants )
+                                        }> Eliminar </button>
 
                                     </li>
                                 )

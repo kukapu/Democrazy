@@ -11,7 +11,7 @@ export const AddParticipant = () => {
 
     const dispatch = useDispatch()
     const { user } = useSelector( state => state.auth )
-    const { uidParticipants } = useSelector( state => state.compare )
+    const { uidParticipants } = useSelector( state => state.votation )
 
     const { newParticipant, onInputChange:onInputChangeNewParticipant }= useForm( newParticipantForm )
 

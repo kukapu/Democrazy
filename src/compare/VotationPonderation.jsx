@@ -4,7 +4,7 @@ import { redirect } from "react-router-dom"
 import { dataPonderation } from "../helpers/dataPonderation"
 import { validatePonderation } from "../helpers/validatePonderation"
 import { useForm } from "../hooks/useForm"
-import { meVoted, startAddNewVote, startCreateMajority } from "../store"
+import { meVoted, startAddNewVote } from "../store"
 import { AddParticipant } from "./AddParticipant"
 import { VotationPonderationVoted } from "./VotationPonderationVoted"
 
@@ -12,7 +12,7 @@ export const VotationPonderation = ({ votationId }) => {
 
     const dispatch = useDispatch()
     const { user } = useSelector( state => state.auth )
-    const { uidParticipants } = useSelector( state => state.compare )
+    const { uidParticipants } = useSelector( state => state.votation )
     const { title, votation } = useSelector( state => state.result )
 
     const [ votationDone, setVotationDone ] = useState(false)

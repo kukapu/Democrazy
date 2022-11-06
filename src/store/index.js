@@ -1,5 +1,4 @@
 export * from './store'
-export * from './compare'
+export * from './votation'
 export * from './auth'
-export * from './majority'
 export * from './result'

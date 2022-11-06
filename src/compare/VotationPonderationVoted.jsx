@@ -7,7 +7,7 @@ export const VotationPonderationVoted = ({ votationId }) => {
 
     const dispatch = useDispatch()
     const { user, didIVote } = useSelector( state => state.auth )
-    const { uidParticipants } = useSelector( state => state.compare )
+    const { uidParticipants } = useSelector( state => state.votation )
     const { allVotationsInfo } = useSelector( state => state.result )
 
     const [ votationDone, setVotationDone ] = useState(true)

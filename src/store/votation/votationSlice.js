@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const compareSlice = createSlice({
-    name: 'compare',
+export const votationSlice = createSlice({
+    name: 'votation',
     initialState: {
         didIVote: false,
         didAllVote: false,
@@ -25,4 +25,4 @@ export const compareSlice = createSlice({
 });
 
 
-export const { voting, addNewParticipant, meVoted } = compareSlice.actions;
+export const { voting, addNewParticipant, meVoted } = votationSlice.actions;

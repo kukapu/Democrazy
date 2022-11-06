@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { dataMajority } from "../helpers/dataMajority"
 import { uniqueVoteMajority } from "../helpers/uniqueVoteMajority"
 import { validateMajority } from "../helpers/validateMajority"
-import { charged, charging, meVoted, startAddNewVote, startCreateMajority } from "../store"
+import { meVoted, startAddNewVote } from "../store"
 import { VotationMajorityVoted } from "./VotationMajorityVoted"
 
 
@@ -12,8 +12,7 @@ export const VotationMajority = ({ votationId, multipleChoice }) => {
 
     const dispatch = useDispatch()
     const { user, isLoading } = useSelector( state => state.auth )
-    const { uidParticipants } = useSelector( state => state.compare )
-    const { title, votation } = useSelector( state => state.result )
+    const { votation } = useSelector( state => state.result )
 
     const [ votationDone, setVotationDone ] = useState(false)
 
