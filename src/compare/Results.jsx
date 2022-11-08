@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
-import { addvotationParticipating, gettingInfoVotations, getMyVotationsIds, gettingInfoVotationsFromUser, charging, charged, getallVotationsInfo, startDeleteVotation } from "../store"
+import { addvotationParticipating, getMyVotationsIds, gettingInfoVotationsFromUser, charging, charged, getallVotationsInfo, startDeleteVotation } from "../store"
 import './Results.css'
 
 export const Results = () => {
@@ -10,7 +10,7 @@ export const Results = () => {
     const { user, isCharging } = useSelector( state => state.auth )
     const { allVotationsInfo } = useSelector( state => state.result )
     const [ allVotationList, setAllVotationList ] = useState( allVotationsInfo )
-    const [showDelete, setShowDelete] = useState(false)
+    const [ showDelete, setShowDelete ] = useState(false)
 
     const getInfoVotationFromUser = async( ) => {
         dispatch( charging() )
