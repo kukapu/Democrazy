@@ -44,10 +44,6 @@ export const Results = () => {
         setAllVotationList( allVotationList.filter( votation => votation._id !== votationId ))
         dispatch( charged() )
     }
-
-    // const prueba = () => {
-    //     console.log( allVotationsInfo )
-    // }
  
     return (
         <div className="center">
@@ -79,8 +75,6 @@ export const Results = () => {
                 }
             </ul>
           
-            {/* <button onClick={ prueba }> PRESS </button> */}
-            
         </div>
     )
 }
