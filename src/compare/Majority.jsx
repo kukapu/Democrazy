@@ -27,19 +27,14 @@ export const Majority = () => {
     ])
 
     const onChangeName = ( event, index ) => {
-        // console.log(event)
         let data = [ ...formField ]
         data[index][event.target.name] = event.target.value
         setFormField( data )
     }
 
     const onChangeCheck = ( event, index ) => {
-        // console.log(event)
         let data = [ ...formField ]
-        // setFormField( !data[index].checked )
         data[index].checked = event.target.checked
-        // console.log(data[index].checked)
-        // console.log(event.target.checked)
         setFormField( data )
     } 
 
@@ -58,7 +53,6 @@ export const Majority = () => {
         event.preventDefault()
 
         let validateFormField = validateMajority( formField )
-        // console.log(validateFormField)
 
         if( validateFormField.checked === 'Hay que elegir una opcion' ) return
 
@@ -66,8 +60,6 @@ export const Majority = () => {
             validateFormField = uniqueVoteMajority( formField )
         }
 
-        // console.log(validateFormField)
-        // console.log(multipleChoice)
 
         if( validateFormField.checked === 'Solo puedes elegir una opcion' ) return 
         const { itemsVoted, votation } = dataMajority( validateFormField )

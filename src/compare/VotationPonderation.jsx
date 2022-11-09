@@ -25,7 +25,6 @@ export const VotationPonderation = ({ votationId }) => {
 
 
     const onChangePonderation = ( event, index ) => {
-        // console.log(event)
         let data = [ ...formField ]
         data[index][event.target.name] = event.target.value
         setFormField( data )
@@ -37,7 +36,6 @@ export const VotationPonderation = ({ votationId }) => {
         const formFieldValidated = validatePonderation( formField )
         
         if (typeof formFieldValidated === 'string') return
-        // console.log(formFieldValidated) 
         const { itemsVoted, votationArray } = dataPonderation( formField )
         console.log(itemsVoted, votation)
 

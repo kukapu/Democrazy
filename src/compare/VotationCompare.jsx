@@ -28,7 +28,6 @@ export const VotationCompare = ({ votationId }) => {
                 dispatch( getInfoResults( votation ) )
             }
         })
-        // console.log( votationId )
     }, [])
     
 
@@ -45,7 +44,6 @@ export const VotationCompare = ({ votationId }) => {
         }))
         dispatch( meVoted() )
         setVotationDone( true )
-        // console.log( votationInfo )
     }
 
     return (

@@ -30,20 +30,11 @@ export const VotationId = () => {
     useEffect(() => {
         
         getInfoVotation()
-        // console.log(votationInfo)
         
         
     }, [])
 
     
-    // const prueba = () => {
-    //     console.log( votation.hasOwnProperty( uid ))
-    //     console.log(uid)
-    //     console.log( type === 'compare' )
-    //     console.log( data )
-    //     console.log(votation.multipleChoice)
-       
-    // }
 
     return (
         <div className="center">
@@ -83,7 +74,6 @@ export const VotationId = () => {
 
 
 
-                        {/* <button onClick={ prueba }>PRES</button> */}
 
                         <br/>
                         <Link to='/'> VOLVER </Link>

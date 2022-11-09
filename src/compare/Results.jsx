@@ -9,7 +9,7 @@ export const Results = () => {
     const dispatch = useDispatch()
     const { user, isCharging } = useSelector( state => state.auth )
     const { allVotationsInfo } = useSelector( state => state.result )
-    const [ allVotationList, setAllVotationList ] = useState( allVotationsInfo )
+    const [ allVotationList, setAllVotationList ] = useState([])
     const [ showDelete, setShowDelete ] = useState(false)
 
     const getInfoVotationFromUser = async( ) => {
@@ -17,15 +17,21 @@ export const Results = () => {
 
         const votationParticipating =  await dispatch( gettingInfoVotationsFromUser({ uid: user.uid }) )
         dispatch( getallVotationsInfo( votationParticipating.infoVotations ))
-        // console.log( votationParticipating )
+        
         const votationsIds = await dispatch( getMyVotationsIds({ uid: user.uid }))
         dispatch( addvotationParticipating( votationsIds ))
+        
 
         dispatch( charged() )
     }
 
     useEffect(() => {
+        setAllVotationList( allVotationsInfo )
+    }, [])
+    
 
+    useEffect(() => {
+        
         getInfoVotationFromUser()
     
     }, [allVotationList])
@@ -36,11 +42,8 @@ export const Results = () => {
     }
 
     const votationDelete = ( votationId, uidParticipants ) => {
-        // console.log(votationId)
         dispatch( charging() )
         dispatch( startDeleteVotation({ votationId, uidParticipants }))
-        // console.log(renderList)
-        // console.log(renderList.filter( votation => votation._id !== votationId ))
         setAllVotationList( allVotationList.filter( votation => votation._id !== votationId ))
         dispatch( charged() )
     }

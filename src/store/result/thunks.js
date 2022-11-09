@@ -7,7 +7,6 @@ export const getMyVotationsIds = ({ uid }) => {
         
         try {
             const { data } = await democracyApi.post('/democracy/results', { uid }) 
-            // console.log( data.votationParticipating )
             return data.votationParticipating
 
         } catch (error) {
@@ -22,7 +21,6 @@ export const gettingInfoVotationsFromUser = ({ uid }) => {
     return async( dispatch ) => {
         try {
             const { data } = await democracyApi.post('/democracy/results/info', { uid }) 
-            // console.log( data )
             return data
 
         } catch (error) {
@@ -37,7 +35,6 @@ export const gettingInfoVotations = ({ votationId }) => {
         
         try {
             const { data } = await democracyApi.post('/democracy/votations', { votationId }) 
-            console.log( data )
             return data
 
         } catch (error) {

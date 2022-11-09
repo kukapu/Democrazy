@@ -26,14 +26,12 @@ export const Ponderation = () => {
     ])
 
     const onChangeName = ( event, index ) => {
-        // console.log(event)
         let data = [ ...formField ]
         data[index][event.target.name] = event.target.value
         setFormField( data )
     }
 
     const onChangePonderation = ( event, index ) => {
-        // console.log(event)
         let data = [ ...formField ]
         data[index][event.target.name] = event.target.value
         setFormField( data )
@@ -57,7 +55,6 @@ export const Ponderation = () => {
         const formFieldValidated = validatePonderation( formField )
         
         if (typeof formFieldValidated === 'string') return
-        // console.log(formFieldValidated) 
         const { itemsVoted, votation } = dataPonderation( formField )
         console.log(itemsVoted, votation)
 

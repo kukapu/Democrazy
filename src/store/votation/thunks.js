@@ -22,8 +22,6 @@ export const startAddNewVote = ({ votationId, votation, uid }) => {
         try {
             
             const resp = await democracyApi.post('/democracy/addVotation', { votationId, votation, uid })
-            // console.log(resp)
-
 
         } catch (error) {
             console.log( error )
@@ -40,10 +38,6 @@ export const startDeleteVotation = ({ votationId, uidParticipants }) => {
         try {
             
             const { data } = await democracyApi.post('/democracy/delete', { votationId, uidParticipants })
-            console.log(data)
-            
-
-
 
         } catch (error) {
             console.log( error )
