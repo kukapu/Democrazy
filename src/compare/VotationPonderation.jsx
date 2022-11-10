@@ -58,9 +58,6 @@ export const VotationPonderation = ({ votationId }) => {
             {
                 ( votationDone )
             
-                    // TODO: VALIDACION DEL MULTICHECK Y ENSEÑAR QUE FORMA TIENE
-                  
-
                     ? <VotationPonderationVoted votationId={ votationId }  />
                     : (
                         <form onSubmit={ onSubmit }>
