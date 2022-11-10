@@ -8,12 +8,10 @@ export const startLogin = ({ email, password }) => {
 
         try {
             const { data } = await democracyApi.post('/auth',{ email, password })
-            // console.log( data.votationParticipating )
 
             
 
             dispatch( login({ name: data.name, uid: data.uid }))
-            // dispatch( addvotationParticipating( data.votationParticipating ))
 
         } catch (error) {
             console.log(error)
@@ -50,9 +48,7 @@ export const startInviteNewParticipants = ( newParticipant ) => {
     return async( dispatch ) => {
 
         try {
-            // console.log( newParticipant )
             const { data } = await democracyApi.post('/new', newParticipant )
-            console.log( data )
             return data
 
 

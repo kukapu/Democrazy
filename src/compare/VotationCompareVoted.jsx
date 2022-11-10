@@ -16,13 +16,10 @@ export const VotationCompareVoted = ({ votationId }) => {
     useEffect(() => {
         allVotationsInfo.map( votation => {
             if( votation._id === votationId ) {
-                // console.log( votationId )
-                // console.log( votation )
                 dispatch( getInfoResults( votation ) )
                 dispatch( meVoted() )
             }
         })
-        // console.log( votationId )
     }, [])
     
     const toggleVotation = () => {

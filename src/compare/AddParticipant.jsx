@@ -28,20 +28,11 @@ export const AddParticipant = () => {
     const onSubmitNewParticipant = async( event ) => {
 
         event.preventDefault()
-        // console.log(participants)
-        // console.log(uidParticipants)
         const { uid, name } = await dispatch( startInviteNewParticipants({ newParticipant: newParticipant }))
-        // console.log(uid)
-        // console.log(uid)
-        // console.log(name)
         if( uidParticipants.some( participant => participant === uid )) return
 
         setParticipants([...participants, name ])
-        //INFO DE LA STORE??? CONSEGUIR RENDERIZAR LISTA PARTICIPANTES Y ACTUALIZAR LA DE DB
-        // console.log(uid)
         dispatch( addNewParticipant( uid ) )
-        // console.log(participants)
-        // console.log(uidParticipants)
 
     }
 

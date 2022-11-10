@@ -21,25 +21,13 @@ export const VotationMajority = ({ votationId, multipleChoice }) => {
     })
 
 
-    // useEffect(() => {
-
-    //     dispatch( charging() )
-
-    
-    //     dispatch( charged() )
-
-    // }, [multipleChoice])
     
 
     const [formField, setFormField] = useState(baseFormField)
 
     const onChangeCheck = ( event, index ) => {
-        // console.log(event)
         let data = [ ...formField ]
-        // setFormField( !data[index].checked )
         data[index].checked = event.target.checked
-        // console.log(data[index].checked)
-        // console.log(event.target.checked)
         setFormField( data )
     } 
 
@@ -48,7 +36,6 @@ export const VotationMajority = ({ votationId, multipleChoice }) => {
         event.preventDefault()
 
         let validateFormField = validateMajority( formField )
-        // console.log(validateFormField)
 
         if( validateFormField.checked === 'Hay que elegir una opcion' ) return
 
@@ -56,12 +43,8 @@ export const VotationMajority = ({ votationId, multipleChoice }) => {
             validateFormField = uniqueVoteMajority( formField )
         }
 
-        console.log(validateFormField)
-        // console.log(multipleChoice)
-
         if( validateFormField.checked === 'Solo puedes elegir una opcion' ) return 
         const { itemsVoted, votationArray } = dataMajority( validateFormField )
-        // console.log( itemsVoted, votation )
         
 
         dispatch( startAddNewVote({ 
@@ -71,12 +54,6 @@ export const VotationMajority = ({ votationId, multipleChoice }) => {
         }))
         dispatch( meVoted() )
         setVotationDone( true )
-    }
-
-    const prueba = () => {
-        
-        console.log(multipleChoice)
-        console.log(votation.multipleChoice)
     }
 
 
@@ -123,7 +100,6 @@ export const VotationMajority = ({ votationId, multipleChoice }) => {
                                 <br/>
                                 <button onSubmit={ onSubmit }> Submit </button>
 
-                                <button onClick={ prueba }> PRESS </button>
                             </div>
                         </form>
                     )
