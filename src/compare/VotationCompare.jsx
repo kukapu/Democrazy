@@ -29,8 +29,8 @@ export const VotationCompare = ({ votationId }) => {
     const onSubmitCompare = ( event ) => {
         event.preventDefault()
 
-        if( userWannaRate > 10 || userWannaRate < 0 ) return
-        if( userRequireRate > 10 || userRequireRate < 0 ) return
+        if( userWannaRate > 10 || userWannaRate < 0 || userWannaRate.length === 0  ) return
+        if( userRequireRate > 10 || userRequireRate < 0 || userRequireRate.length === 0  ) return
 
         dispatch( startAddNewVote({ 
             votationId: votationId, 

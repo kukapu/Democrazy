@@ -7,7 +7,6 @@ export const startCreateVotation = ({ type, title, votation, uidParticipants }) 
         try {
             
             const resp = await democracyApi.post('/democracy/createVotation', { type, title, votation, uidParticipants })
-            console.log(resp)
 
         } catch (error) {
             console.log( error )

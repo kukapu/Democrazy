@@ -42,8 +42,6 @@ export const VotationMajority = ({ votationId, multipleChoice }) => {
             validateFormField = uniqueVoteMajority( formField )
         }
 
-        console.log(validateFormField)
-
         if( validateFormField.checked === 'Solo puedes elegir una opcion' ) return 
         const { itemsVoted, votationArray } = dataMajority( validateFormField )
         

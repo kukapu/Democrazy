@@ -7,6 +7,7 @@ import { useForm } from "../hooks/useForm"
 import { startCreateVotation } from "../store"
 import { AddParticipant } from "./AddParticipant"
 import { majorityForm } from "../helpers"
+import { useNavigate } from "react-router-dom"
 
 
 export const Majority = () => {
@@ -15,6 +16,7 @@ export const Majority = () => {
     const { title, onInputChange } = useForm( majorityForm )
     const { user } = useSelector( state => state.auth )
     const { uidParticipants } = useSelector( state => state.votation )
+    const navigate = useNavigate()
 
     const [multipleChoice, setMultipleChoice] = useState(false)
 
@@ -74,6 +76,8 @@ export const Majority = () => {
             },
             uidParticipants,
         }))
+
+        navigate('/')
     }
 
 

@@ -6,12 +6,14 @@ import { useForm } from "../hooks/useForm"
 import { startCreateVotation } from "../store"
 import { AddParticipant } from "./AddParticipant"
 import { ponderationTitleForm } from "../helpers"
+import { useNavigate } from "react-router-dom"
 
 export const Ponderation = () => {
 
     const dispatch = useDispatch()
     const { user } = useSelector( state => state.auth )
     const { uidParticipants } = useSelector( state => state.votation )
+    const navigate = useNavigate()
 
     const { title, onInputChange } = useForm( ponderationTitleForm )
 
@@ -65,6 +67,8 @@ export const Ponderation = () => {
             },
             uidParticipants,
         }))
+
+        navigate('/')
     }
 
 
