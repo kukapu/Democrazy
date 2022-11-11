@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { redirect } from "react-router-dom"
+import { redirect, useNavigate } from "react-router-dom"
 import { dataPonderation } from "../helpers/dataPonderation"
 import { validatePonderation } from "../helpers/validatePonderation"
 import { useForm } from "../hooks/useForm"
@@ -14,6 +14,7 @@ export const VotationPonderation = ({ votationId }) => {
     const { user } = useSelector( state => state.auth )
     const { uidParticipants } = useSelector( state => state.votation )
     const { title, votation } = useSelector( state => state.result )
+    const navigate = useNavigate()
 
     const [ votationDone, setVotationDone ] = useState(false)
 
@@ -37,7 +38,6 @@ export const VotationPonderation = ({ votationId }) => {
         
         if (typeof formFieldValidated === 'string') return
         const { itemsVoted, votationArray } = dataPonderation( formField )
-        console.log(itemsVoted, votation)
 
 
         dispatch( startAddNewVote({ 
@@ -47,8 +47,7 @@ export const VotationPonderation = ({ votationId }) => {
         }))
         dispatch( meVoted() )
 
-        setVotationDone( true )
-
+        navigate('')
 
     }
 

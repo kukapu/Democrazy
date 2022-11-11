@@ -4,6 +4,7 @@ import { useForm } from "../hooks/useForm"
 import { getInfoResults, meVoted, startAddNewVote } from "../store"
 import { VotationCompareVoted } from "./VotationCompareVoted"
 import { compareFormVotation } from "../helpers"
+import { useNavigate } from "react-router-dom"
 
 export const VotationCompare = ({ votationId }) => {
 
@@ -11,6 +12,7 @@ export const VotationCompare = ({ votationId }) => {
     const { user, didIVote } = useSelector( state => state.auth )
     const { uidParticipants } = useSelector( state => state.votation )
     const { allVotationsInfo, votation } = useSelector( state => state.result )
+    const navigate = useNavigate()
     const [ votationDone, setVotationDone ] = useState(false)
     
     const { userWannaRate, userRequireRate, onInputChange } = useForm( compareFormVotation ) 
@@ -18,8 +20,6 @@ export const VotationCompare = ({ votationId }) => {
     useEffect(() => {
         allVotationsInfo.map( votation => {
             if( votation._id === votationId ) {
-                console.log( votationId )
-                console.log( votation )
                 dispatch( getInfoResults( votation ) )
             }
         })
@@ -38,7 +38,7 @@ export const VotationCompare = ({ votationId }) => {
             uid: user.uid,
         }))
         dispatch( meVoted() )
-        setVotationDone( true )
+        navigate('/')
     }
 
     return (

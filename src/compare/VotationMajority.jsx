@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
 import { dataMajority } from "../helpers/dataMajority"
 import { uniqueVoteMajority } from "../helpers/uniqueVoteMajority"
 import { validateMajority } from "../helpers/validateMajority"
@@ -13,6 +14,7 @@ export const VotationMajority = ({ votationId, multipleChoice }) => {
     const dispatch = useDispatch()
     const { user, isLoading } = useSelector( state => state.auth )
     const { votation } = useSelector( state => state.result )
+    const navigate = useNavigate()
 
     const [ votationDone, setVotationDone ] = useState(false)
 
@@ -52,13 +54,7 @@ export const VotationMajority = ({ votationId, multipleChoice }) => {
             uid: user.uid,
         }))
         dispatch( meVoted() )
-        setVotationDone( true )
-    }
-
-    const prueba = () => {
-        
-        console.log(multipleChoice)
-        console.log(votation.multipleChoice)
+        navigate('/')
     }
 
 
@@ -105,7 +101,6 @@ export const VotationMajority = ({ votationId, multipleChoice }) => {
                                 <br/>
                                 <button onSubmit={ onSubmit }> Submit </button>
 
-                                <button onClick={ prueba }> PRESS </button>
                             </div>
                         </form>
                     )
