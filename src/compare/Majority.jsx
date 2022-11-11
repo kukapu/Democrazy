@@ -6,10 +6,8 @@ import { validateMajority } from "../helpers/validateMajority"
 import { useForm } from "../hooks/useForm"
 import { startCreateVotation } from "../store"
 import { AddParticipant } from "./AddParticipant"
+import { majorityForm } from "../helpers"
 
-const majorityForm = {
-    title: ''
-}
 
 export const Majority = () => {
 

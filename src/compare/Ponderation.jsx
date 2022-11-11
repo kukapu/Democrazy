@@ -5,11 +5,7 @@ import { validatePonderation } from "../helpers/validatePonderation"
 import { useForm } from "../hooks/useForm"
 import { startCreateVotation } from "../store"
 import { AddParticipant } from "./AddParticipant"
-
-
-const ponderationTitleForm = {
-    title: ''
-}
+import { ponderationTitleForm } from "../helpers"
 
 export const Ponderation = () => {
 

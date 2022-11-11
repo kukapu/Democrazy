@@ -2,12 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useForm } from "../hooks/useForm"
 import { startCreateVotation } from "../store"
 import { AddParticipant } from "./AddParticipant"
-
-const compareForm = {
-    title: '',
-    userWannaRate: '',
-    userRequireRate: '',
-}
+import { compareForm } from "../helpers"
 
 export const Compare = () => {
 

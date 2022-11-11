@@ -3,12 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useForm } from "../hooks/useForm"
 import { getInfoResults, meVoted, startAddNewVote } from "../store"
 import { VotationCompareVoted } from "./VotationCompareVoted"
-
-const compareForm = {
-    userWannaRate: '',
-    userRequireRate: '',
-}
-
+import { compareFormVotation } from "../helpers"
 
 export const VotationCompare = ({ votationId }) => {
 
@@ -18,7 +13,7 @@ export const VotationCompare = ({ votationId }) => {
     const { allVotationsInfo, votation } = useSelector( state => state.result )
     const [ votationDone, setVotationDone ] = useState(false)
     
-    const { userWannaRate, userRequireRate, onInputChange } = useForm( compareForm ) 
+    const { userWannaRate, userRequireRate, onInputChange } = useForm( compareFormVotation ) 
 
     useEffect(() => {
         allVotationsInfo.map( votation => {

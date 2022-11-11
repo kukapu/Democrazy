@@ -57,9 +57,6 @@ export const VotationPonderation = ({ votationId }) => {
         <div className="center">
             {
                 ( votationDone )
-            
-                    // TODO: VALIDACION DEL MULTICHECK Y ENSEÑAR QUE FORMA TIENE
-                  
 
                     ? <VotationPonderationVoted votationId={ votationId }  />
                     : (

@@ -2,10 +2,8 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useForm } from "../hooks/useForm"
 import { addNewParticipant, startInviteNewParticipants } from "../store"
+import { newParticipantForm } from '../helpers/constants'
 
-const newParticipantForm = {
-    newParticipant: ''
-}
 
 export const AddParticipant = () => {
 
