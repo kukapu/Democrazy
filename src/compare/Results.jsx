@@ -49,8 +49,10 @@ export const Results = () => {
  
     return (
         <div className="center">
-            <h1>Votaciones</h1>
-            <button onClick={ onTaggleDelete }> Eliminar Votaciones </button>
+            <div className="headerPart">
+                <h1>Votaciones</h1>
+                <button onClick={ onTaggleDelete }> Eliminar Votaciones </button>
+            </div>
 
             <ul className="listContainer">
                 {
