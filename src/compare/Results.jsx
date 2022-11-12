@@ -38,7 +38,6 @@ export const Results = () => {
 
     const onTaggleDelete = () => {
         setShowDelete( !showDelete )
-        console.log(showDelete)
     }
 
     const votationDelete = ( votationId, uidParticipants ) => {

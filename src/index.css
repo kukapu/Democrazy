@@ -1,6 +1,9 @@
 body {
     max-width: 999px;
     margin: auto;
+    background-color: rgb(26, 27, 30);
+    color: white
+    ;
 }
 .center {
     text-align: center;
