@@ -1,24 +1,32 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useForm } from "../hooks/useForm"
-import { addNewParticipant, startInviteNewParticipants } from "../store"
+import { addNewParticipant, startGetAllUsers, startInviteNewParticipants, toggleCharging } from "../store"
 import { newParticipantForm } from '../helpers/constants'
 
 
 export const AddParticipant = () => {
 
     const dispatch = useDispatch()
-    const { user } = useSelector( state => state.auth )
+    const { user, isCharging } = useSelector( state => state.auth )
     const { uidParticipants } = useSelector( state => state.votation )
 
     const { newParticipant, onInputChange:onInputChangeNewParticipant }= useForm( newParticipantForm )
 
     const [ participants, setParticipants ] = useState([ user.name ])
 
+    let listAllUsers = []
+
+
     useEffect(() => {
+        dispatch( toggleCharging( true ))
+
         if( !uidParticipants.some( uid => uid === user.uid )){
             dispatch( addNewParticipant( user.uid ))
         }
+        getAllUsersNames()
+
+        dispatch( toggleCharging( false ))
 
     }, []) 
     
@@ -31,7 +39,11 @@ export const AddParticipant = () => {
 
         setParticipants([...participants, name ])
         dispatch( addNewParticipant( uid ) )
+    }
 
+    const getAllUsersNames = async() => {
+        const { allUsersNames } = await dispatch( startGetAllUsers() )
+        listAllUsers = allUsersNames
     }
 
     return (  
@@ -44,7 +56,7 @@ export const AddParticipant = () => {
                     name="newParticipant"
                     value={ newParticipant }
                     onChange={ onInputChangeNewParticipant }
-                    list="wizards-list"                
+                    list="users-list"                
                 />
                 <input 
                     type="submit"
@@ -59,13 +71,16 @@ export const AddParticipant = () => {
                     )
                 })}
             </ul>
-            <datalist id="wizards-list">
-                <option>Harry Potter</option>
-                <option>Hermione</option>
-                <option>Dumbledore</option>
-                <option>Merlin</option>
-                <option>Gandalf</option>
-            </datalist>
+
+            {   
+                (isCharging)
+                    ? <datalist></datalist>
+                    : ( listAllUsers?.map( user => {
+                        return (
+                            <datalist>{ user }</datalist>
+                        )    
+                    }))
+            }
 
         </>
     )

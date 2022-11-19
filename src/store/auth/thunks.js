@@ -58,3 +58,18 @@ export const startInviteNewParticipants = ( newParticipant ) => {
     }
 
 }
+
+export const startGetAllUsers = () => {
+
+    return async( dispatch ) => {
+
+        try {
+            const { data } = await democracyApi.post('/new/getAllParticipants')
+            return data
+            
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+}

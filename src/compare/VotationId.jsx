@@ -19,12 +19,12 @@ export const VotationId = () => {
     let votationInfo = {}
 
     const getInfoVotation = async() => {
-        dispatch( toggleCharging( isCharging ) )
+        dispatch( toggleCharging( true ) )
 
         votationInfo = await dispatch( gettingInfoVotations({ votationId: votationId }))
         dispatch( getInfoResults( votationInfo ))
         
-        dispatch( toggleCharging( isCharging ) )
+        dispatch( toggleCharging( false ) )
     }
 
     useEffect(() => {
