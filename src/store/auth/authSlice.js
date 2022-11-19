@@ -17,11 +17,8 @@ export const authSlice = createSlice({
             state.isLogged = false
             state.user = {}
         }, 
-        charging: ( state ) => {
-            state.isCharging = true
-        },
-        charged: ( state ) => {
-            state.isCharging = false
+        toggleCharging: ( state, { payload } ) => {
+            state.isCharging = payload
         },
         addvotationParticipating: ( state, { payload }) => {
             state.votationParticipating = payload
@@ -30,4 +27,4 @@ export const authSlice = createSlice({
 });
 
 
-export const { login, logout, charging, charged, addvotationParticipating } = authSlice.actions;
+export const { login, logout, toggleCharging, addvotationParticipating } = authSlice.actions;

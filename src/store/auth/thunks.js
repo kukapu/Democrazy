@@ -1,10 +1,12 @@
+import { useSelector } from "react-redux"
 import { democracyApi } from "../../api/democracyApi"
-import { addvotationParticipating, charged, charging, login } from "./authSlice"
+import { addvotationParticipating, login, toggleCharging } from "./authSlice"
 
 export const startLogin = ({ email, password }) => {
 
+
     return async( dispatch ) => {
-        dispatch( charging )
+        dispatch( toggleCharging ( true ) )
 
         try {
             const { data } = await democracyApi.post('/auth',{ email, password })
@@ -17,14 +19,14 @@ export const startLogin = ({ email, password }) => {
 
 
 
-        dispatch( charged )
+        dispatch( toggleCharging ( false ) )
     }
 }
 
 export const startRegister = ({ name, email, password }) => {
 
     return async( dispatch ) => {
-        dispatch( charging )
+        dispatch( toggleCharging ( true ) )
 
         try {
             const { data } = await democracyApi.post('/auth/register',{ name, email, password })
@@ -37,7 +39,7 @@ export const startRegister = ({ name, email, password }) => {
         }
 
 
-        dispatch( charged )
+        dispatch( toggleCharging ( false ) )
     }
 }
 

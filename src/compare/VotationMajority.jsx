@@ -1,19 +1,20 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { dataMajority } from "../helpers/dataMajority"
 import { uniqueVoteMajority } from "../helpers/uniqueVoteMajority"
 import { validateMajority } from "../helpers/validateMajority"
-import { meVoted, startAddNewVote } from "../store"
+import { getInfoResults, meVoted, startAddNewVote } from "../store"
 import { VotationMajorityVoted } from "./VotationMajorityVoted"
 
 
 
-export const VotationMajority = ({ votationId, multipleChoice }) => {
+export const VotationMajority = ({ votationId }) => {
 
     const dispatch = useDispatch()
     const { user, isLoading } = useSelector( state => state.auth )
-    const { votation } = useSelector( state => state.result )
+    const { votation, allVotationsInfo } = useSelector( state => state.result )
+    
     const navigate = useNavigate()
 
     const [ votationDone, setVotationDone ] = useState(false)
@@ -23,6 +24,15 @@ export const VotationMajority = ({ votationId, multipleChoice }) => {
     })
 
     const [formField, setFormField] = useState(baseFormField)
+
+    useEffect(() => {
+        allVotationsInfo.map( votation => {
+            if( votation._id === votationId ) {
+                dispatch( getInfoResults( votation ) )
+                dispatch( meVoted() )
+            }
+        })
+    }, [])
 
     const onChangeCheck = ( event, index ) => {
         let data = [ ...formField ]
@@ -38,12 +48,12 @@ export const VotationMajority = ({ votationId, multipleChoice }) => {
 
         if( validateFormField.checked === 'Hay que elegir una opcion' ) return
 
-        if( !multipleChoice ) {
+        if( !votation.multipleChoice ) {
             validateFormField = uniqueVoteMajority( formField )
         }
 
         if( validateFormField.checked === 'Solo puedes elegir una opcion' ) return 
-        const { itemsVoted, votationArray } = dataMajority( validateFormField )
+        const { votationArray } = dataMajority( validateFormField )
         
 
         dispatch( startAddNewVote({ 
@@ -68,7 +78,8 @@ export const VotationMajority = ({ votationId, multipleChoice }) => {
                                 {
                                     ( isLoading ) 
                                         ? <h3> Cargando </h3>
-                                        : (
+                                        : 
+                                            
                                             baseFormField.map( ( form, index ) => {
                                                 return (
                                                     <div key={ index }>
@@ -77,7 +88,6 @@ export const VotationMajority = ({ votationId, multipleChoice }) => {
                                                             placeholder="Que quieres hacer?"
                                                             name="name"
                                                             readOnly
-                                                            required
                                                             value={ form.name }
                                                         />
                                                         <input 
@@ -89,7 +99,7 @@ export const VotationMajority = ({ votationId, multipleChoice }) => {
                                                     </div>
                                                 )
                                             })
-                                        )
+                                        
 
                                         
 

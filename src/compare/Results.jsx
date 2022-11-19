@@ -1,35 +1,17 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
-import { addvotationParticipating, getMyVotationsIds, gettingInfoVotationsFromUser, charging, charged, getallVotationsInfo, startDeleteVotation } from "../store"
+import { useResults } from "../hooks/useResults"
+import { addvotationParticipating, getMyVotationsIds, gettingInfoVotationsFromUser, getallVotationsInfo, startDeleteVotation, toggleCharging } from "../store"
 import './Results.css'
 
 export const Results = () => {
 
     const dispatch = useDispatch()
-    const { user, isCharging } = useSelector( state => state.auth )
-    const { allVotationsInfo } = useSelector( state => state.result )
-    const [ allVotationList, setAllVotationList ] = useState([])
+    const { isCharging } = useSelector( state => state.auth )
     const [ showDelete, setShowDelete ] = useState(false)
-
-    const getInfoVotationFromUser = async( ) => {
-        dispatch( charging() )
-
-        const votationParticipating =  await dispatch( gettingInfoVotationsFromUser({ uid: user.uid }) )
-        dispatch( getallVotationsInfo( votationParticipating.infoVotations ))
-        
-        const votationsIds = await dispatch( getMyVotationsIds({ uid: user.uid }))
-        dispatch( addvotationParticipating( votationsIds ))
-        
-
-        dispatch( charged() )
-    }
-
-    useEffect(() => {
-        setAllVotationList( allVotationsInfo )
-    }, [])
+    const { allVotationList, setAllVotationList, getInfoVotationFromUser } = useResults()
     
-
     useEffect(() => {
         
         getInfoVotationFromUser()
@@ -41,10 +23,10 @@ export const Results = () => {
     }
 
     const votationDelete = ( votationId, uidParticipants ) => {
-        dispatch( charging() )
+        dispatch( toggleCharging( true ) )
         dispatch( startDeleteVotation({ votationId, uidParticipants }))
-        setAllVotationList( allVotationList.filter( votation => votation._id !== votationId ))
-        dispatch( charged() )
+        setAllVotationList( () => allVotationList.filter( votation => votation._id !== votationId ))
+        dispatch( toggleCharging( false ) )
     }
  
     return (

@@ -44,6 +44,7 @@ export const AddParticipant = () => {
                     name="newParticipant"
                     value={ newParticipant }
                     onChange={ onInputChangeNewParticipant }
+                    list="wizards-list"                
                 />
                 <input 
                     type="submit"
@@ -58,6 +59,13 @@ export const AddParticipant = () => {
                     )
                 })}
             </ul>
+            <datalist id="wizards-list">
+                <option>Harry Potter</option>
+                <option>Hermione</option>
+                <option>Dumbledore</option>
+                <option>Merlin</option>
+                <option>Gandalf</option>
+            </datalist>
 
         </>
     )

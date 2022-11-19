@@ -1,7 +1,7 @@
-import { useEffect, useEffectLayout } from "react"
+import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useParams } from "react-router-dom"
-import { charged, charging, getInfoResults, gettingInfoVotations, meVoted } from "../store"
+import { getInfoResults, gettingInfoVotations, meVoted, toggleCharging } from "../store"
 import { VotationCompare } from "./VotationCompare"
 import { VotationCompareVoted } from "./VotationCompareVoted"
 import { VotationMajority } from "./VotationMajority"
@@ -19,12 +19,12 @@ export const VotationId = () => {
     let votationInfo = {}
 
     const getInfoVotation = async() => {
-        dispatch( charging() )
+        dispatch( toggleCharging( isCharging ) )
 
         votationInfo = await dispatch( gettingInfoVotations({ votationId: votationId }))
         dispatch( getInfoResults( votationInfo ))
         
-        dispatch( charged() )
+        dispatch( toggleCharging( isCharging ) )
     }
 
     useEffect(() => {
@@ -43,7 +43,7 @@ export const VotationId = () => {
                ? <h1> CARGANDO... </h1>
                : (
                     <>
-                        <div>{ title }</div>
+                        <h1>{ title }</h1>
                         {
                             ( type === 'compare' )
                                 ? (

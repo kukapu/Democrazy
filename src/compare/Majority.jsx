@@ -60,10 +60,10 @@ export const Majority = () => {
             validateFormField = uniqueVoteMajority( formField )
         }
 
-
         if( validateFormField.checked === 'Solo puedes elegir una opcion' ) return 
-        const { itemsVoted, votation } = dataMajority( validateFormField )
-        console.log( itemsVoted, votation )
+
+        const { itemsVoted, votationArray } = dataMajority( validateFormField )
+        
 
 
         dispatch( startCreateVotation({
@@ -72,7 +72,7 @@ export const Majority = () => {
             votation: { 
                 multipleChoice,
                 itemsVoted,
-                [user.uid] : votation
+                [user.uid] : votationArray
             },
             uidParticipants,
         }))
@@ -95,11 +95,14 @@ export const Majority = () => {
                 onChange={ onInputChange }
             />
             <br/>
-            <input
-                type="checkbox"
-                value={ multipleChoice }
-                onChange={ () => setMultipleChoice(!multipleChoice) }
-            />
+            <div>
+                <span>Multichoice</span>
+                <input
+                    type="checkbox"
+                    value={ multipleChoice }
+                    onChange={ () => setMultipleChoice(!multipleChoice) }
+                />
+            </div>
             
             <form onSubmit={ onSubmit }>
                 <div>

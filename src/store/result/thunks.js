@@ -1,4 +1,5 @@
 import { democracyApi } from "../../api/democracyApi"
+import { toggleCharging } from "../auth"
 
 
 export const getMyVotationsIds = ({ uid }) => {
@@ -19,6 +20,7 @@ export const getMyVotationsIds = ({ uid }) => {
 export const gettingInfoVotationsFromUser = ({ uid }) => {
 
     return async( dispatch ) => {
+
         try {
             const { data } = await democracyApi.post('/democracy/results/info', { uid }) 
             return data
@@ -26,6 +28,8 @@ export const gettingInfoVotationsFromUser = ({ uid }) => {
         } catch (error) {
             console.log( error )
         }
+
+        
     }
 }
 
