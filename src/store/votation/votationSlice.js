@@ -4,9 +4,7 @@ export const votationSlice = createSlice({
     name: 'votation',
     initialState: {
         didIVote: false,
-        didAllVote: false,
         votation: [],
-        result: undefined,
         uidParticipants: []
     },
     reducers: {

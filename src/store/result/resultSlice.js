@@ -8,6 +8,7 @@ export const resultSlice = createSlice({
         votation: {},
         uidParticipants: [],
         id: '',
+        result: undefined,
         allVotationsInfo: []
     },
     reducers: {
@@ -17,6 +18,7 @@ export const resultSlice = createSlice({
             state.type = payload.type
             state.uidParticipants = payload.uidParticipants
             state.id = payload._id
+            state.result = payload.result
         },
         getallVotationsInfo: ( state, { payload }) => {
             state.allVotationsInfo = payload
