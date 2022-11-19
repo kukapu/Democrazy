@@ -54,7 +54,6 @@ export const Ponderation = () => {
         
         if (typeof formFieldValidated === 'string') return
         const { itemsVoted, votation } = dataPonderation( formField )
-        console.log(itemsVoted, votation)
 
 
         dispatch( startCreateVotation({

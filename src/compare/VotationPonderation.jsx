@@ -47,7 +47,7 @@ export const VotationPonderation = ({ votationId }) => {
         }))
         dispatch( meVoted() )
 
-        navigate('')
+        navigate('/')
 
     }
 
