@@ -30,7 +30,7 @@ export const VotationPonderationResult = ({ toggleVotation }) => {
                 ( !(result.length === 0) ) 
                     ? (
                         <>
-                            <h1> { textResult } </h1> 
+                            <h1 className="result-text"> { textResult } </h1> 
                         </>
                     )
                     : (

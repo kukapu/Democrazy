@@ -35,33 +35,38 @@ export const Results = () => {
         <div className="center">
             <div className="headerPart">
                 <h1>Votaciones</h1>
-                <button className="input-button" onClick={ onTaggleDelete }> Eliminar votaciones </button>
+                { (!allVotationList.length === 0) && <button className="input-button" onClick={ onTaggleDelete }> Eliminar votaciones </button> }
             </div>
 
-            <ul className="listContainer">
-                {
-                    ( isCharging ) 
-                        ? <h3> Cargando </h3>
-                        : ( 
-                            allVotationList.map( votation => {
-                                return (
-                                    <li key={ votation?._id } className={`listItem ${ votation?.type } listItemConteiner`}>
-                                        <Link to={`/results/${votation?._id}`} className="listLink">
-                                            <span> { votation?.title } </span>
-                                            <span> {` (${ votation?.type })`} </span>
-                                        </Link>
-                                        
-                                        <button 
-                                            className={`delete-result listDeleteButton ${showDelete ? 'show' : 'dispalyNone'}`}
-                                            onClick={ () => votationDelete(votation._id, votation.uidParticipants )
-                                        }> Eliminar </button>
+            {   
+                (allVotationList.length === 0)
+                    ? <div> No participas en ninguna votacion </div>
+                : <ul className="listContainer">
+                    {
+                        ( isCharging ) 
+                            ? <h3> Cargando </h3>
+                            : ( 
+                                allVotationList.map( votation => {
+                                    return (
+                                        <li key={ votation?._id } className={`listItem ${ votation?.type } listItemConteiner`}>
+                                            <Link to={`/results/${votation?._id}`} className="listLink">
+                                                <span> { votation?.title } </span>
+                                                <span> {` (${ votation?.type })`} </span>
+                                            </Link>
+                                            
+                                            <button 
+                                                className={`delete-result listDeleteButton ${showDelete ? 'show' : 'dispalyNone'}`}
+                                                onClick={ () => votationDelete(votation._id, votation.uidParticipants )
+                                            }> Eliminar </button>
 
-                                    </li>
-                                )
-                            })
-                        )
-                }
-            </ul>
+                                        </li>
+                                    )
+                                })
+                            )
+                    }
+                </ul>
+            }
+            
           
         </div>
     )
