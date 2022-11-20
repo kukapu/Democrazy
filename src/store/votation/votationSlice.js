@@ -15,6 +15,9 @@ export const votationSlice = createSlice({
         addNewParticipant: ( state, { payload }) => {
             state.uidParticipants.push( payload )
         },
+        resetParticipant: ( state ) => {
+            state.uidParticipants = []
+        },
         meVoted: ( state ) => {
             state.didIVote = true
         }
@@ -23,4 +26,4 @@ export const votationSlice = createSlice({
 });
 
 
-export const { voting, addNewParticipant, meVoted } = votationSlice.actions;
+export const { voting, addNewParticipant, resetParticipant, meVoted } = votationSlice.actions;

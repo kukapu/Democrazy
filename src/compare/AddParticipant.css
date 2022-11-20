@@ -1,0 +1,42 @@
+.container {
+    border-radius: 10px;
+    background-color: rgb(31, 69, 112);
+    width: 70%;
+    margin: 0 auto;
+    padding: 0 20px 20px 20px;
+}
+
+.title {
+    padding: 20px;
+}
+
+
+.form-container {
+    display: flex;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    height: 30px;
+}
+
+.input-form {
+    border-radius: 3px;
+}
+
+.list-container {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 0;
+}
+
+.list-item {
+    list-style-type: none;
+    background-color: rgb(84, 112, 161);
+    padding: 5px;
+    border-radius: 5px;
+}
