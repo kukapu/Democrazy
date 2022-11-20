@@ -17,10 +17,59 @@ body {
 
 .input-button {
     padding: 5px;
+    margin: auto;
     margin-top: 10px;
     border-radius: 10px;
     width: 15%;
     background-color: rgb(31, 69, 112);
     color: white;
     border: none;
+}
+
+.input-checkbox {
+    width: 18px;
+    height: 18px;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: center;
+}
+
+.multicheck {
+    background-color: rgb(31, 69, 112);
+    padding: 6px;
+    width: 20%;
+    margin: auto;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title-form {
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.input-checkbox-text {
+    align-self: center;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.links {
+    box-sizing: border-box;
+    display: block;
+    text-decoration: none;
+    padding: 5px;
+    width: 15%;
+    margin: auto;
 }

@@ -5,6 +5,7 @@ import { getInfoResults, meVoted, startAddNewVote } from "../store"
 import { VotationCompareVoted } from "./VotationCompareVoted"
 import { compareFormVotation } from "../helpers"
 import { useNavigate } from "react-router-dom"
+import '../index.css'
 
 export const VotationCompare = ({ votationId }) => {
 
@@ -51,6 +52,7 @@ export const VotationCompare = ({ votationId }) => {
                     <form onSubmit={ onSubmitCompare }>
                         <div>
                             <input 
+                                className="input-general-form"
                                 type="number"
                                 placeholder="Cuanto te apetece?"
                                 name="userWannaRate"
@@ -60,6 +62,7 @@ export const VotationCompare = ({ votationId }) => {
                         </div>
                         <div>
                             <input 
+                                className="input-general-form"
                                 type="number"
                                 placeholder="Cuanto para hacerlo?"
                                 name="userRequireRate"
@@ -69,7 +72,8 @@ export const VotationCompare = ({ votationId }) => {
                         </div>
 
                         <div>
-                            <input 
+                            <input
+                                className="input-button" 
                                 type="submit"
                                 value="Guardar" 
                             />

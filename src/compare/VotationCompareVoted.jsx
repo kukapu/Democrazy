@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { getInfoResults, meVoted } from "../store"
 import { VotationCompare } from "./VotationCompare"
 import { VotationCompareResult } from "./VotationCompareResult"
+import '../index.css'
 
 export const VotationCompareVoted = ({ votationId }) => {
 
@@ -40,7 +41,7 @@ export const VotationCompareVoted = ({ votationId }) => {
                     : (
                         <>
                             <VotationCompare votationId={ votationId } />
-                            <button onClick={ toggleVotation }> DEJAR DE EDITAR </button>
+                            <button className="input-button" onClick={ toggleVotation }> Cancelar </button>
                         </>
                     )
             }

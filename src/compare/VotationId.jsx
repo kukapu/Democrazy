@@ -8,6 +8,7 @@ import { VotationMajority } from "./VotationMajority"
 import { VotationMajorityVoted } from "./VotationMajorityVoted"
 import { VotationPonderation } from "./VotationPonderation"
 import { VotationPonderationVoted } from "./VotationPonderationVoted"
+import '../index.css'
 
 export const VotationId = () => {
 
@@ -76,7 +77,9 @@ export const VotationId = () => {
 
 
                         <br/>
-                        <Link to='/'> VOLVER </Link>
+                        <div className="link-center">
+                            <Link className="links input-button" to='/'> Volver </Link>
+                        </div>
                     </>
                )
             }

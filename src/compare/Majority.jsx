@@ -8,6 +8,8 @@ import { startCreateVotation } from "../store"
 import { AddParticipant } from "./AddParticipant"
 import { majorityForm } from "../helpers"
 import { useNavigate } from "react-router-dom"
+import '../index.css'
+import './Majority.css'
 
 
 export const Majority = () => {
@@ -88,16 +90,18 @@ export const Majority = () => {
             <AddParticipant />
 
             <input
+                className="input-general-form title-form"
                 type="text"
-                placeholder="Que quieres hacer"
+                placeholder="¿Que quieres votar?"
                 name="title"
                 value={ title }
                 onChange={ onInputChange }
             />
             <br/>
-            <div>
-                <span>Multichoice</span>
+            <div className="multicheck">
+                <span>¿Multiple opcion?</span>
                 <input
+                    className="input-checkbox"
                     type="checkbox"
                     value={ multipleChoice }
                     onChange={ () => setMultipleChoice(!multipleChoice) }
@@ -109,30 +113,32 @@ export const Majority = () => {
                     {
                         formField.map( ( form, index ) => {
                             return (
-                                <div key={ index }>
+                                <div key={ index } className="flex-container">
                                     <input
+                                        className="input-checkbox-text"
                                         type="text"
-                                        placeholder="Que quieres hacer?"
+                                        placeholder="Opciones"
                                         name="name"
                                         required
                                         value={ form.name }
                                         onChange={ () => onChangeName( event, index )}
                                     />
                                     <input 
+                                        className="input-checkbox"
                                         type="checkbox"
                                         value={ form.checked }
                                         onChange={ () => onChangeCheck( event, index )}
                                     />
-                                    <button onClick={ () => onDeleteCheck( event, index ) }> - </button>
+                                    <button className="delete-button" onClick={ () => onDeleteCheck( event, index ) }> Eliminar </button>
                                 </div>
 
                             )
 
                         })
                     }
-                    <button onClick={ onAddCheck }> + </button>
+                    <button onClick={ onAddCheck }> Añadir </button>
                     <br/>
-                    <button onSubmit={ onSubmit }> Submit </button>
+                    <button className="input-button" onSubmit={ onSubmit }> Guardar </button>
                 </div>
             </form>
         </div>

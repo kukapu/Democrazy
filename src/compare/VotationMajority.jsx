@@ -6,7 +6,7 @@ import { uniqueVoteMajority } from "../helpers/uniqueVoteMajority"
 import { validateMajority } from "../helpers/validateMajority"
 import { getInfoResults, meVoted, startAddNewVote } from "../store"
 import { VotationMajorityVoted } from "./VotationMajorityVoted"
-
+import '../index.css'
 
 
 export const VotationMajority = ({ votationId }) => {
@@ -82,8 +82,9 @@ export const VotationMajority = ({ votationId }) => {
                                             
                                             baseFormField.map( ( form, index ) => {
                                                 return (
-                                                    <div key={ index }>
+                                                    <div key={ index } className="flex-container">
                                                         <input
+                                                            className="input-checkbox-text"
                                                             type="text"
                                                             placeholder="Que quieres hacer?"
                                                             name="name"
@@ -91,6 +92,7 @@ export const VotationMajority = ({ votationId }) => {
                                                             value={ form.name }
                                                         />
                                                         <input 
+                                                            className="input-checkbox"
                                                             type="checkbox"
                                                             value={ form.checked }
                                                             onChange={ () => onChangeCheck( event, index )}
@@ -107,7 +109,7 @@ export const VotationMajority = ({ votationId }) => {
                                 
                         
                                 <br/>
-                                <button onSubmit={ onSubmit }> Submit </button>
+                                <button className="input-button" onSubmit={ onSubmit }> Guardar </button>
 
                             </div>
                         </form>
