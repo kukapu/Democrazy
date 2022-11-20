@@ -1,5 +1,3 @@
-
-
 import { useSelector } from "react-redux"
 
 export const VotationPonderationResult = ({ toggleVotation }) => {
@@ -39,7 +37,7 @@ export const VotationPonderationResult = ({ toggleVotation }) => {
                         <>
                             <h3> Ya has votado </h3>
                             <h3> Esperando Resultados... </h3>
-                            <button onClick={ toggleVotation }> EDITAR VOTACION </button>
+                            <button className="input-button" onClick={ toggleVotation }> Editar </button>
                         </>
                     )
                         

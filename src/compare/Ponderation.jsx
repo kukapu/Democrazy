@@ -7,6 +7,7 @@ import { startCreateVotation } from "../store"
 import { AddParticipant } from "./AddParticipant"
 import { ponderationTitleForm } from "../helpers"
 import { useNavigate } from "react-router-dom"
+import '../index.css'
 
 export const Ponderation = () => {
 
@@ -78,8 +79,9 @@ export const Ponderation = () => {
             <AddParticipant />
 
             <input
+                className="input-general-form title-form"
                 type="text"
-                placeholder="Que quieres hacer"
+                placeholder="¿Que quieres votar?"
                 name="title"
                 value={ title }
                 onChange={ onInputChange }
@@ -91,33 +93,35 @@ export const Ponderation = () => {
                     {
                         formField.map( ( form, index ) => {
                             return (
-                                <div key={ index }>
+                                <div key={ index } className="flex-container">
                                     <input
+                                        className="input-checkbox-text"
                                         type="text"
-                                        placeholder="Que quieres hacer?"
+                                        placeholder="Opciones"
                                         required
-
                                         name="name"
                                         value={ form.name }
                                         onChange={ () => onChangeName( event, index )}
                                     />
                                     <input
+                                        className="input-checkbox-text input-number"
                                         type="number"
-                                        name="position"
+                                        placeholder="0 al 10"
                                         required
+                                        name="position"
                                         value={ form.position }
                                         onChange={ () => onChangePonderation( event, index )}
                                     />
-                                    <button onClick={ () => onDeleteCheck( event, index ) }> - </button>
+                                    <button onClick={ () => onDeleteCheck( event, index ) }> Eliminar </button>
                                 </div>
 
                             )
 
                         })
                     }
-                    <button onClick={ onAddCheck }> + </button>
+                    <button onClick={ onAddCheck }> Añadir </button>
                     <br/>
-                    <button onSubmit={ onSubmit }> Submit </button>
+                    <button className="input-button" onSubmit={ onSubmit }> Guardar </button>
                 </div>
             </form>
         </div>

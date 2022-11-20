@@ -41,7 +41,7 @@ export const VotationMajorityVoted = ({ votationId }) => {
                     : (
                         <>
                             <VotationMajority votationId={ votationId } />
-                            <button onClick={ toggleVotation }> DEJAR DE EDITAR </button>
+                            <button className="input-button" onClick={ toggleVotation }> Cancelar </button>
                         </>
                     )
             }

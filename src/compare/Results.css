@@ -1,5 +1,4 @@
 .listContainer {
-    border: 1px solid black;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -20,9 +19,9 @@
 }
 
 .listLink {
+    width: 80%;
+    text-align: left;
     text-decoration: none;
-    border: 1px solid black;
-    align-self: stretch;
     color: aliceblue;
     padding-left: 10px;
 }

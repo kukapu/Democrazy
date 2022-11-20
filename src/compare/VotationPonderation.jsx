@@ -7,6 +7,8 @@ import { useForm } from "../hooks/useForm"
 import { meVoted, startAddNewVote } from "../store"
 import { AddParticipant } from "./AddParticipant"
 import { VotationPonderationVoted } from "./VotationPonderationVoted"
+import '../index.css'
+
 
 export const VotationPonderation = ({ votationId }) => {
 
@@ -66,6 +68,7 @@ export const VotationPonderation = ({ votationId }) => {
                                         return (
                                             <div key={ index }>
                                                 <input
+                                                    className="input-checkbox-text"
                                                     type="text"
                                                     placeholder="Que quieres hacer?"
                                                     readOnly
@@ -74,9 +77,11 @@ export const VotationPonderation = ({ votationId }) => {
                                                     onChange={ () => onChangeName( event, index )}
                                                 />
                                                 <input
+                                                    className="input-checkbox-text input-number"
                                                     type="number"
-                                                    name="position"
+                                                    placeholder="0 al 10"
                                                     required
+                                                    name="position"
                                                     value={ form.position }
                                                     onChange={ () => onChangePonderation( event, index )}
                                                 />
@@ -87,7 +92,7 @@ export const VotationPonderation = ({ votationId }) => {
                                     })
                                 }
                                 <br/>
-                                <button onSubmit={ onSubmit }> Submit </button>
+                                <button className="input-button" onSubmit={ onSubmit }> Guardar </button>
                             </div>
                         </form>
                     )

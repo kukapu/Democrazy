@@ -35,7 +35,7 @@ export const Results = () => {
         <div className="center">
             <div className="headerPart">
                 <h1>Votaciones</h1>
-                <button onClick={ onTaggleDelete }> Eliminar Votaciones </button>
+                <button className="input-button" onClick={ onTaggleDelete }> Eliminar votaciones </button>
             </div>
 
             <ul className="listContainer">
@@ -47,12 +47,12 @@ export const Results = () => {
                                 return (
                                     <li key={ votation?._id } className={`listItem ${ votation?.type } listItemConteiner`}>
                                         <Link to={`/results/${votation?._id}`} className="listLink">
-                                            <span> ({ votation?.type }) </span>
                                             <span> { votation?.title } </span>
+                                            <span> {` (${ votation?.type })`} </span>
                                         </Link>
                                         
                                         <button 
-                                            className={`listDeleteButton ${showDelete ? 'show' : 'dispalyNone'}`}
+                                            className={`delete-result listDeleteButton ${showDelete ? 'show' : 'dispalyNone'}`}
                                             onClick={ () => votationDelete(votation._id, votation.uidParticipants )
                                         }> Eliminar </button>
 

@@ -1,4 +1,5 @@
 body {
+    font-family: Calibri, 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
     max-width: 999px;
     margin: auto;
     background-color: rgb(26, 27, 30);
@@ -19,11 +20,20 @@ body {
     padding: 5px;
     margin: auto;
     margin-top: 10px;
+    margin-bottom: 10px;
     border-radius: 10px;
     width: 15%;
     background-color: rgb(31, 69, 112);
     color: white;
     border: none;
+}
+
+.delete-result {
+    background-color: rgb(31, 69, 112);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 .input-checkbox {
@@ -72,4 +82,9 @@ body {
     padding: 5px;
     width: 15%;
     margin: auto;
+}
+
+.input-number {
+    width: 6%;
+    margin-right: 10px;
 }

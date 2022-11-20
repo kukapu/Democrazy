@@ -69,7 +69,7 @@ export const AddParticipant = () => {
                     <input
                         className="input-form"
                         type="text"
-                        placeholder="nombre"
+                        placeholder="Nombre"
                         name="newParticipant"
                         value={ newParticipant }
                         onChange={ onInputChangeNewParticipant }

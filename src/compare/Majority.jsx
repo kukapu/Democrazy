@@ -9,7 +9,6 @@ import { AddParticipant } from "./AddParticipant"
 import { majorityForm } from "../helpers"
 import { useNavigate } from "react-router-dom"
 import '../index.css'
-import './Majority.css'
 
 
 export const Majority = () => {
