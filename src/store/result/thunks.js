@@ -1,5 +1,7 @@
+import { useSelector } from "react-redux"
 import { democracyApi } from "../../api/democracyApi"
 import { toggleCharging } from "../auth"
+import { getallVotationsInfo } from "./resultSlice"
 
 
 export const getMyVotationsIds = ({ uid }) => {
@@ -19,12 +21,13 @@ export const getMyVotationsIds = ({ uid }) => {
 
 export const gettingInfoVotationsFromUser = ({ uid }) => {
 
+
     return async( dispatch ) => {
 
         try {
             const { data } = await democracyApi.post('/democracy/results/info', { uid }) 
+            dispatch( getallVotationsInfo( data.infoVotations ))
             return data
-
         } catch (error) {
             console.log( error )
         }

@@ -4,12 +4,15 @@ import { startCreateVotation } from "../store"
 import { AddParticipant } from "./AddParticipant"
 import { compareForm } from "../helpers"
 import { useNavigate } from "react-router-dom"
+import { useResults } from "../hooks/useResults"
 
 export const Compare = () => {
 
     const dispatch = useDispatch()
     const { user } = useSelector( state => state.auth )
     const { uidParticipants } = useSelector( state => state.votation )
+    const { allVotationsInfo } = useSelector( state => state.result )
+    const { setAllVotationList, allVotationList } = useResults()
     const navigate = useNavigate()
     
     const { userWannaRate, userRequireRate, title, onInputChange } = useForm( compareForm ) 
@@ -21,12 +24,17 @@ export const Compare = () => {
         if( userRequireRate > 10 || userRequireRate < 0 || userRequireRate.length === 0 ) return
         if( title.length <= 2 ) return
 
-        dispatch( startCreateVotation( { 
+        const votation = { 
             type: 'compare', 
             title, 
             votation: { [user.uid]: [ userWannaRate, userRequireRate ]}, 
             uidParticipants,
-        }))
+        }
+
+        dispatch( startCreateVotation( votation ))
+
+        setAllVotationList( allVotationsInfo )
+        console.log(allVotationsInfo)
 
         navigate('/')
     }

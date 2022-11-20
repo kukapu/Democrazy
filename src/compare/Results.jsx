@@ -10,24 +10,26 @@ export const Results = () => {
     const dispatch = useDispatch()
     const { isCharging } = useSelector( state => state.auth )
     const [ showDelete, setShowDelete ] = useState(false)
-    const { allVotationList, setAllVotationList, getInfoVotationFromUser } = useResults()
+    const { allVotationList, setAllVotationList, getInfoVotationFromUser, getFisrtRender, votationDelete } = useResults()
     
+
+    useEffect(() => {
+        
+        getFisrtRender()
+    
+    }, [])
+
     useEffect(() => {
         
         getInfoVotationFromUser()
     
     }, [allVotationList])
-
+    
     const onTaggleDelete = () => {
         setShowDelete( !showDelete )
     }
 
-    const votationDelete = ( votationId, uidParticipants ) => {
-        dispatch( toggleCharging( true ) )
-        dispatch( startDeleteVotation({ votationId, uidParticipants }))
-        setAllVotationList( () => allVotationList.filter( votation => votation._id !== votationId ))
-        dispatch( toggleCharging( false ) )
-    }
+  
  
     return (
         <div className="center">
@@ -43,10 +45,10 @@ export const Results = () => {
                         : ( 
                             allVotationList.map( votation => {
                                 return (
-                                    <li key={ votation._id } className={`listItem ${ votation.type } listItemConteiner`}>
-                                        <Link to={`/results/${votation._id}`} className="listLink">
-                                            <span> { votation.type } </span>
-                                            <span> { votation.title } </span>
+                                    <li key={ votation?._id } className={`listItem ${ votation?.type } listItemConteiner`}>
+                                        <Link to={`/results/${votation?._id}`} className="listLink">
+                                            <span> { votation?.type } </span>
+                                            <span> { votation?.title } </span>
                                         </Link>
                                         
                                         <button 
