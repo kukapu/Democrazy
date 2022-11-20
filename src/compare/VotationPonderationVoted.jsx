@@ -41,7 +41,7 @@ export const VotationPonderationVoted = ({ votationId }) => {
                     : (
                         <>
                             <VotationPonderation votationId={ votationId } />
-                            <button className="input-button" onClick={ toggleVotation }> Cancelar </button>
+                            <button className="cancel-button" onClick={ toggleVotation }> Cancelar </button>
                         </>
                     )
             }

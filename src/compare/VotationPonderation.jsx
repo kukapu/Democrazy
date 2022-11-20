@@ -91,7 +91,6 @@ export const VotationPonderation = ({ votationId }) => {
 
                                     })
                                 }
-                                <br/>
                                 <button className="input-button" onSubmit={ onSubmit }> Guardar </button>
                             </div>
                         </form>

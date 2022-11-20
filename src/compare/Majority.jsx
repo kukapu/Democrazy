@@ -136,7 +136,6 @@ export const Majority = () => {
                         })
                     }
                     <button onClick={ onAddCheck }> Añadir </button>
-                    <br/>
                     <button className="input-button" onSubmit={ onSubmit }> Guardar </button>
                 </div>
             </form>

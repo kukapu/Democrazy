@@ -29,10 +29,11 @@ export const RegisterPage = () => {
 
 
     return (
-        <div>
+        <div className="login-container">
             <form onSubmit={ onRegister }>
                 <div>
-                    <input 
+                    <input
+                        className="input-general-form" 
                         type="name"
                         placeholder="name"
                         name="registerName"
@@ -42,7 +43,8 @@ export const RegisterPage = () => {
                 </div>
 
                 <div>
-                    <input 
+                    <input
+                        className="input-general-form" 
                         type="email"
                         placeholder="email"
                         name="registerEmail"
@@ -53,6 +55,7 @@ export const RegisterPage = () => {
 
                 <div>
                     <input 
+                        className="input-general-form"
                         type="password"
                         placeholder="password"
                         name="registerPassword"
@@ -62,6 +65,7 @@ export const RegisterPage = () => {
                 </div>
                 <div>
                     <input 
+                        className="input-general-form"
                         type="password"
                         placeholder="password"
                         name="registerPassword2"
@@ -72,12 +76,13 @@ export const RegisterPage = () => {
 
                 <div>
                     <input
+                        className="input-button-login"
                         type="submit"
-                        value="Register"
+                        value="Registrarse"
                     />
                 </div>
                 <div className="form-button mt">
-                    <Link to='/login' >Login</Link>
+                    <Link className="login-links" to='/login' >Ir a Login</Link>
                 </div>
             </form>
         </div>

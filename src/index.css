@@ -6,6 +6,7 @@ body {
     color: white
     ;
 }
+
 .center {
     text-align: center;
 }
@@ -34,6 +35,29 @@ body {
     border: none;
     border-radius: 5px;
     padding: 5px;
+}
+
+.input-button-login {
+    background-color: rgb(31, 69, 112);
+    color: white;
+    border: none;
+    padding: 5px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    width: 50%;
+}
+
+.cancel-button {
+    padding: 5px;
+    margin: auto;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    width: 15%;
+    background-color: rgb(31, 69, 112);
+    color: white;
+    border: none;
 }
 
 .input-checkbox {
@@ -84,7 +108,39 @@ body {
     margin: auto;
 }
 
+.login-links {
+    background-color: rgb(31, 69, 112);
+    color: white;   
+    box-sizing: border-box;
+    display: block;
+    text-decoration: none;
+    padding: 5px;
+    width: 50%;
+    margin: auto;
+    border-radius: 10px;
+}
+
 .input-number {
     width: 6%;
     margin-right: 10px;
+}
+
+.login-container {
+    background-color: rgb(70, 83, 116);
+    margin: auto;
+    margin-top: 100px;
+    width: 30%;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.result-text {
+    background-color: rgb(39, 115, 255);
+    width: 40%;
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 10px;
+
 }

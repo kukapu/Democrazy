@@ -73,10 +73,6 @@ export const VotationId = () => {
                                 : <div></div>
                         }
 
-
-
-
-                        <br/>
                         <div className="link-center">
                             <Link className="links input-button" to='/'> Volver </Link>
                         </div>

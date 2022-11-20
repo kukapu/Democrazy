@@ -5,8 +5,8 @@ export const VotationCompareResult = ({ toggleVotation }) => {
     const { result } = useSelector( state => state.result )
     let textResult = ''
 
-    if( result[0] > result[1] ) textResult = 'SI SE HACE'
-    if( result[0] < result[1] ) textResult = 'NO SE HACE'
+    if( result[0] > result[1] ) textResult = '¡¡ SI SE HACE !!'
+    if( result[0] < result[1] ) textResult = '¡¡ NO SE HACE !!'
 
     
     return (
@@ -15,7 +15,7 @@ export const VotationCompareResult = ({ toggleVotation }) => {
                 ( !(result.length === 0) ) 
                     ? (
                         <>
-                            <h1> { textResult } </h1> 
+                            <h1 className="result-text"> { textResult } </h1> 
                         </>
                     )
                     : (

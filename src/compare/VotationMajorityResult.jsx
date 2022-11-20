@@ -20,7 +20,7 @@ export const VotationMajorityResult = ({ toggleVotation }) => {
         textResult = `EMPATE ENTRE ${indices.map( element => (itemVotation[element])).join(' y ')}`
         
     } else {
-        textResult = `HA GANADO ${itemVotation[result.indexOf( max )]}`
+        textResult = `HA GANADO ${itemVotation[result.indexOf( max )]} !!!`
     }
     
     
@@ -30,7 +30,7 @@ export const VotationMajorityResult = ({ toggleVotation }) => {
                 ( !(result.length === 0) ) 
                     ? (
                         <>
-                            <h1> { textResult } </h1> 
+                            <h1 className="result-text"> { textResult } </h1> 
                         </>
                     )
                     : (

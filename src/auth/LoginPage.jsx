@@ -21,10 +21,11 @@ export const LoginPage = () => {
     } 
 
     return (
-        <div className="center">
+        <div className="login-container">
             <form onSubmit={ onLogin }>
                 <div>
                     <input 
+                        className="input-general-form"
                         type="email"
                         placeholder="email"
                         name="loginEmail"
@@ -35,6 +36,7 @@ export const LoginPage = () => {
 
                 <div>
                     <input 
+                        className="input-general-form"
                         type="password"
                         placeholder="password"
                         name="loginPassword"
@@ -45,12 +47,13 @@ export const LoginPage = () => {
 
                 <div>
                     <input
+                        className="input-button-login"
                         type="submit"
                         value="Login"
                     />
                 </div>
                 <div className="form-button mt">
-                    <Link to='/register' >Registrarse</Link>
+                    <Link className="login-links" to='/register' >Ir a Registro</Link>
                 </div>
             </form>
         </div>
