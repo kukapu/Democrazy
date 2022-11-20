@@ -8,3 +8,19 @@ body {
 .center {
     text-align: center;
 }
+
+.input-general-form {
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+}
+
+.input-button {
+    padding: 5px;
+    margin-top: 10px;
+    border-radius: 10px;
+    width: 15%;
+    background-color: rgb(31, 69, 112);
+    color: white;
+    border: none;
+}

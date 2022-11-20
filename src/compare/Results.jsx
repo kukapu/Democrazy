@@ -47,7 +47,7 @@ export const Results = () => {
                                 return (
                                     <li key={ votation?._id } className={`listItem ${ votation?.type } listItemConteiner`}>
                                         <Link to={`/results/${votation?._id}`} className="listLink">
-                                            <span> { votation?.type } </span>
+                                            <span> ({ votation?.type }) </span>
                                             <span> { votation?.title } </span>
                                         </Link>
                                         

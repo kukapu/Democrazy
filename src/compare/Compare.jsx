@@ -5,6 +5,7 @@ import { AddParticipant } from "./AddParticipant"
 import { compareForm } from "../helpers"
 import { useNavigate } from "react-router-dom"
 import { useResults } from "../hooks/useResults"
+import '../index.css'
 
 export const Compare = () => {
 
@@ -45,11 +46,12 @@ export const Compare = () => {
 
             <AddParticipant />
             
-            <p> Que quieres hacer mas?</p>
+            <h2> ¿Cuanto te apetece hacerlo? </h2>
 
             <form onSubmit={ onSubmitCompare }>
                 <div>
                     <input 
+                        className="input-general-form"
                         type="text"
                         placeholder="Que quieres hacer?"
                         name="title"
@@ -58,7 +60,8 @@ export const Compare = () => {
                     />
                 </div>
                 <div>
-                    <input 
+                    <input
+                        className="input-general-form"
                         type="number"
                         placeholder="Cuanto te apetece?"
                         name="userWannaRate"
@@ -67,7 +70,8 @@ export const Compare = () => {
                     />
                 </div>
                 <div>
-                    <input 
+                    <input
+                        className="input-general-form"
                         type="number"
                         placeholder="Cuanto para hacerlo?"
                         name="userRequireRate"
@@ -78,6 +82,7 @@ export const Compare = () => {
 
                 <div>
                     <input 
+                        className="input-button"
                         type="submit"
                         value="Guardar" 
                     />
