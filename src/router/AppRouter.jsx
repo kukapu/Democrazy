@@ -20,8 +20,10 @@ export const AppRouter = () => {
     }, [])
     
     const storageLogged = () => {
-        const user = JSON.parse(localStorage.getItem('user'))
-        dispatch( login({ name: user.name, uid: user.uid }))
+        if( !isLogged ) {
+            const user = JSON.parse(localStorage.getItem('user'))
+            dispatch( login( user ))
+        }
     }
 
     return (
