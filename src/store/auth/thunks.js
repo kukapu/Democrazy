@@ -10,8 +10,9 @@ export const startLogin = ({ email, password }) => {
 
         try {
             const { data } = await democracyApi.post('/auth',{ email, password })
-
+            
             dispatch( login({ name: data.name, uid: data.uid }))
+            localStorage.setItem('user', JSON.stringify({ name: data.name, uid: data.uid }))
 
         } catch (error) {
             console.log(error)
@@ -30,9 +31,9 @@ export const startRegister = ({ name, email, password }) => {
 
         try {
             const { data } = await democracyApi.post('/auth/register',{ name, email, password })
-            
 
             dispatch( login({ name: data.name, uid: data.uid }))
+            localStorage.setItem('user', JSON.stringify({ name: data.name, uid: data.uid }))
 
         } catch (error) {
             console.log(error)

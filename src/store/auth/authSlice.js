@@ -16,6 +16,7 @@ export const authSlice = createSlice({
         logout: ( state ) => {
             state.isLogged = false
             state.user = {}
+            state.votationParticipating = []
         }, 
         toggleCharging: ( state, { payload } ) => {
             state.isCharging = payload

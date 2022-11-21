@@ -1,14 +1,28 @@
-import { useSelector } from "react-redux"
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import { Route, Routes } from "react-router-dom"
 import { LoginPage, RegisterPage } from "../auth"
 import { Compare, Majority, Ponderation } from "../compare"
 import { Results } from "../compare/Results"
 import { VotationId } from "../compare/VotationId"
+import { login } from "../store"
 import { Navbar } from "../ui/Navbar"
 
 export const AppRouter = () => {
 
+    const dispatch = useDispatch()
     const { isLogged } = useSelector( state =>  state.auth )
+
+    useEffect(() => {
+        
+        storageLogged()
+
+    }, [])
+    
+    const storageLogged = () => {
+        const user = JSON.parse(localStorage.getItem('user'))
+        dispatch( login({ name: user.name, uid: user.uid }))
+    }
 
     return (
         <>

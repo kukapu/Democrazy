@@ -22,9 +22,18 @@ export const resultSlice = createSlice({
         },
         getallVotationsInfo: ( state, { payload }) => {
             state.allVotationsInfo = payload
+        },
+        resultLogout: ( state ) => {
+            state.type = '',
+            state.title = '',
+            state.votation = {},
+            state.uidParticipants = [],
+            state.id = '',
+            state.result = undefined,
+            state.allVotationsInfo = []
         }
     }
 });
 
 
-export const { getInfoResults, getallVotationsInfo } = resultSlice.actions;
+export const { getInfoResults, getallVotationsInfo, resultLogout } = resultSlice.actions;

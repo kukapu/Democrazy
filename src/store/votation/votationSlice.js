@@ -20,10 +20,13 @@ export const votationSlice = createSlice({
         },
         meVoted: ( state ) => {
             state.didIVote = true
+        },
+        votationLogout: ( state ) => {
+            state.didIVote = false
+            state.uidParticipants = []
         }
-
     }
 });
 
 
-export const { voting, addNewParticipant, resetParticipant, meVoted } = votationSlice.actions;
+export const { voting, addNewParticipant, resetParticipant, meVoted, votationLogout } = votationSlice.actions;

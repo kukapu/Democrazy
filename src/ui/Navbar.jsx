@@ -1,7 +1,7 @@
 import { useReducer, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
-import { logout } from "../store"
+import { logout, resultLogout, votationLogout } from "../store"
 import './Navbar.css'
 
 export const Navbar = () => {
@@ -17,6 +17,8 @@ export const Navbar = () => {
 
     const onLogout = () => {
         dispatch( logout() )
+        dispatch( votationLogout() )
+        dispatch( resultLogout() )
     }
 
     return (
