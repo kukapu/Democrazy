@@ -74,7 +74,7 @@ export const Ponderation = () => {
 
     return (
         <div className="center">
-            <h1> Ponderation </h1>
+            <h1> Ponderacion </h1>
             
             <AddParticipant />
 

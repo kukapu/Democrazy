@@ -84,7 +84,7 @@ export const Majority = () => {
 
     return (
         <div className="center">
-            <h1> Mayoria </h1>
+            <h1> Mayoria Simple </h1>
 
             <AddParticipant />
 

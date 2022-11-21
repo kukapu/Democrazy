@@ -67,8 +67,8 @@ export const Navbar = () => {
             
             <nav className="header-nav">
                 <ul className={ `header-ul ${ menuActive ? 'isActive' : ''}` } >
-                    <Link onClick={ onToggleMenu } className="header-link" to='/compare'>Compare</Link>
-                    <Link onClick={ onToggleMenu } className="header-link" to='/majority'>Majority</Link>
+                    <Link onClick={ onToggleMenu } className="header-link" to='/compare'>Comparacion</Link>
+                    <Link onClick={ onToggleMenu } className="header-link" to='/majority'>Mayoria Simple</Link>
                     <Link onClick={ onToggleMenu } className="header-link" to='/ponderation'>Ponderacion</Link>
                 </ul>
             </nav>
