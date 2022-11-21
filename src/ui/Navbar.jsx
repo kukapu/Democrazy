@@ -19,7 +19,7 @@ export const Navbar = () => {
         dispatch( logout() )
         dispatch( votationLogout() )
         dispatch( resultLogout() )
-        localStorage.clear()
+        localStorage.removeItem('userDemocracy')
     }
 
     return (

@@ -11,7 +11,7 @@ import { Navbar } from "../ui/Navbar"
 export const AppRouter = () => {
 
     const dispatch = useDispatch()
-    const { isLogged } = useSelector( state =>  state.auth )
+    const { isLogged, user } = useSelector( state =>  state.auth )
 
     useEffect(() => {
         
@@ -20,9 +20,10 @@ export const AppRouter = () => {
     }, [])
     
     const storageLogged = () => {
-        if( JSON.parse(localStorage.getItem('user')) === null) {
-            dispatch( login( JSON.parse(localStorage.getItem('user') )))
-        }
+        
+        if( JSON.parse(localStorage.getItem('userDemocracy')) === null) return
+        
+        dispatch( login( JSON.parse(localStorage.getItem('userDemocracy') )))
     }
 
     return (
