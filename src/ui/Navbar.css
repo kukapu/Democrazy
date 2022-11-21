@@ -31,6 +31,7 @@
     color: aliceblue;
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .header-button:hover {

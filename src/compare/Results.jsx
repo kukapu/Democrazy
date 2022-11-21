@@ -39,32 +39,32 @@ export const Results = () => {
             </div>
 
             {   
-                (allVotationList.length === 0)
-                    ? <div> No participas en ninguna votacion </div>
-                : <ul className="listContainer">
-                    {
-                        ( isCharging ) 
-                            ? <h3> Cargando </h3>
-                            : ( 
-                                allVotationList.map( votation => {
-                                    return (
-                                        <li key={ votation?._id } className={`listItem ${ votation?.type } listItemConteiner`}>
-                                            <Link to={`/results/${votation?._id}`} className="listLink">
-                                                <span> { votation?.title } </span>
-                                                <span> {` (${ votation?.type })`} </span>
-                                            </Link>
-                                            
-                                            <button 
-                                                className={`delete-result listDeleteButton ${showDelete ? 'show' : 'dispalyNone'}`}
-                                                onClick={ () => votationDelete(votation._id, votation.uidParticipants )
-                                            }> Eliminar </button>
+                ( isCharging ) 
+                    ? <h3> Cargando </h3>
+                    : (allVotationList.length === 0)
+                            ? <div> No participas en ninguna votacion </div>
+                            : <ul className="listContainer">
+                                {
+                                    ( 
+                                        allVotationList.map( votation => {
+                                            return (
+                                                <li key={ votation?._id } className={`listItem ${ votation?.type } listItemConteiner`}>
+                                                    <Link to={`/results/${votation?._id}`} className="listLink">
+                                                        <span> { votation?.title } </span>
+                                                        <span> {` (${ votation?.type })`} </span>
+                                                    </Link>
+                                                    
+                                                    <button 
+                                                        className={`delete-result listDeleteButton ${showDelete ? 'show' : 'dispalyNone'}`}
+                                                        onClick={ () => votationDelete(votation._id, votation.uidParticipants )
+                                                    }> Eliminar </button>
 
-                                        </li>
+                                                </li>
+                                            )
+                                        })
                                     )
-                                })
-                            )
-                    }
-                </ul>
+                                }
+                            </ul>
             }
             
           
