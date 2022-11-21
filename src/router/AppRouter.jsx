@@ -40,7 +40,7 @@ export const AppRouter = () => {
                                 <Route path='/compare' element={ <Compare /> } />
                                 <Route path='/majority' element={ <Majority /> } />
                                 <Route path='/ponderation' element={ <Ponderation /> } />
-                                <Route path='*' element={ <Results /> } />
+                                <Route path='/*' element={ <Results /> } />
 
                             </Routes>
 
@@ -51,7 +51,7 @@ export const AppRouter = () => {
                         <Routes>
                             <Route path='/login' element={ <LoginPage/> } />
                             <Route path='/register' element={ <RegisterPage/> } />
-                            <Route path='*' element={ <LoginPage/> } />
+                            <Route path='/*' element={ <LoginPage/> } />
                         </Routes>
                     )
                 
